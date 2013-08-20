@@ -1,0 +1,16 @@
+<config>
+  <global>
+    <modules>
+        <Peanut_Importattributes>
+            <version>0.1.0</version>
+        </Peanut_Importattributes>
+    </modules>
+	<!-- ... -->
+    <models>
+        <importattributes>
+            <class>Peanut_Importattributes_Model</class>
+        </importattributes>
+    </models>
+    <!-- ... -->
+   </global>
+</config>
