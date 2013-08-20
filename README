@@ -1,0 +1,32 @@
+
+This magento module allows you to import attributes for configurable attributes from a csv file using Dataflow Profile.
+
+The attributes will be dropdown, Global, Used to Create Configurable Product, and not filterable. It is limited because
+that is what I needed. With some changes to the functions saveRow and createAttribute attributes could be created with 
+other input types and scopes. This module does not delete attributes.
+
+If you don't want to install it as an extension you can change the class Peanut_Importattributes_Model_Convert_Adapter_Attribute
+to Mage_Eav_Model_Convert_Adapter_Attribute and place Attribute.php in app/code/local/Mage/Eav/Model/Convert/Adapter and
+change the class name in the Action XML.
+
+The csv file should have these fields: attribute_set, group_set, label, attribute_code, product_types, values.
+The atribute sets and group sets should already exist. The attribute_code should be only letters, numbers,
+and underscores. It should start with a leter and be no longer than 254 characters. Values should be separated 
+by the pipe character '|'. Product types, separated by commas, are simple, grouped, configurable, virtual, 
+bundle, downloadable, giftcard. If empty then defaults to all product types.
+
+Example:
+attribute_set	group_set	label			attribute_code	product_types	values
+Default			General		My Attribute	my_attribute					value1|value2|value3
+Default			Prices		Price Attr		my_price_attr	simple,grouped	
+
+Some pages I found useful writing this:
+http://www.magentocommerce.com/knowledge-base/entry/magento-for-dev-part-1-introduction-to-magento
+http://www.magentocommerce.com/wiki/how_to_-_import_manufacturers_or_any_other_option_attribute_set
+http://www.magentocommerce.com/wiki/5_-_modules_and_development/catalog/programmatically_adding_attributes_and_attribute_sets
+http://blog.onlinebizsoft.com/magento-programmatically-insert-new-attribute-option/
+http://www.chrisshennan.com/2011/04/23/import-product-attributes-into-magento/
+http://blog.magikcommerce.com/importing-manufactures-option-attribute-sets-in-magento/
+http://www.meabed.net/2013/03/22/magento-adding-existing-attribute-to-all-attribute-sets.html
+http://www.magentothemess.com/archives/1832
+http://www.magentocommerce.com/wiki/3_-_store_setup_and_management/import_export/how_to_automatically_import_simple_grouped_and_configurable_products
